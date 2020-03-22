@@ -1,0 +1,59 @@
+<div class="text-center " style="margin: auto;color: #31546E;">
+    <h4> Banking Ledger</h4>
+
+</div>
+
+
+<div class="jumbotron mt-0 pt-0">
+    <div class="row">
+        <nav class="navbar searchbar-wrapper col-2 offset-8">
+            <a href="/analytics">Analytics</a>
+
+        </nav>
+        <nav class="navbar searchbar-wrapper col-2 ">
+            <i class="fa fa-search searchbar-i" aria-hidden="true"></i>
+            <input class="form-control" style="padding-left:1.75rem;" placeholder="search" type="text" name="search"
+                [(ngModel)]="filter">
+        </nav>
+        <div class="col-12  p-2 bg-white">
+            <table class=" table">
+                <thead>
+                    <tr style="color: #31546E;">
+                        <th>#</th>
+                        <th>Account No</th>
+                        <th (click)=" sortDays()">Date
+                            <span [ngClass]="{'fa fa-sort-up': reverseDays}"></span>
+                            <span [ngClass]="{'fa fa-sort-down': !reverseDays}"></span>
+                        </th>
+                        <th>Transaction Details</th>
+                        <th (click)="sortValueDays()">Value Date
+                            <span [ngClass]="{'fa fa-sort-up': reverseValueDays}"></span>
+                            <span [ngClass]="{'fa fa-sort-down': !reverseValueDays}"></span>
+                        </th>
+                        <th>Withdrawal AMT</th>
+                        <th>Deposit AMT</th>
+                        <th (click)="sortAmt('Balance Amount')"> Balance Amount
+                            <span [ngClass]="{'fa fa-sort-up': reverse}"></span>
+                            <span [ngClass]="{'fa fa-sort-down': !reverse}"></span>
+                        </th>
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr style="color: #31546E;font-weight: 400;"
+                        *ngFor="let data of dataSet| orderBy: key : reverse | filter:filter | paginate: config; let i = index">
+                        <td>{{i}}</td>
+                        <td>{{data["Account No"]}}</td>
+                        <td>{{data["Date"]|date}}</td>
+                        <td>{{data["Transaction Details"]}}</td>
+                        <td>{{data["Value Date"]|date}}</td>
+                        <td>{{data["Withdrawal AMT"]}}</td>
+                        <td>{{data["Deposit AMT"]}}</td>
+                        <td>{{data["Balance AMT"]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
+    </div>

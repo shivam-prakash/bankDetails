@@ -1,0 +1,24 @@
+<div class="text-center" style="margin :auto;color: #31546E;">
+    <h4>
+        Balance amount VS Time
+    </h4>
+</div>
+
+<div class="wrapper">
+
+    <canvas baseChart [datasets]=" lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+    </canvas>
+</div>
+<hr>
+<div class="text-center" style="margin :auto;color: #31546E;">
+    <h4>
+        No of Withdrawals Vs No of Deposits
+    </h4>
+</div>
+<div class="text-center" style=" margin:auto; padding-left: 15px;width: 500px;height: 250px;">
+    <canvas style=" width: 250px;height: 150px;display:block;" baseChart [datasets]="pieChartData"
+        [labels]="pieChartLabels" [options]="pieChartOptions" [colors]="pieChartColors" [legend]="pieChartLegend"
+        [chartType]="pieChartType" [plugins]="pieChartPlugins">
+    </canvas>
+</div>
